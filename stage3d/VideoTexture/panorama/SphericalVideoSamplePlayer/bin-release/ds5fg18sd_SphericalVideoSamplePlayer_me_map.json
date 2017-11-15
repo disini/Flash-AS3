@@ -1,0 +1,136 @@
+{
+  "mapping": [
+    {
+      "originalName": "_mainVideoUrl",
+      "newName": "catch"
+    },
+    {
+      "originalName": "mainVideoLoading",
+      "newName": "sfdml`"
+    },
+    {
+      "originalName": "addContextMenuItem",
+      "newName": "sfdml2"
+    },
+    {
+      "originalName": "zFar",
+      "newName": "dynamic"
+    },
+    {
+      "originalName": "adVideoPlayComplete",
+      "newName": "sfdml4"
+    },
+    {
+      "originalName": "_stats",
+      "newName": "native"
+    },
+    {
+      "originalName": "initUI",
+      "newName": "sfdml-"
+    },
+    {
+      "originalName": "_urlPrefix",
+      "newName": "sfdml+"
+    },
+    {
+      "originalName": "adVideoLoading",
+      "newName": "sfdml\u0027"
+    },
+    {
+      "originalName": "controlBar",
+      "newName": "super"
+    },
+    {
+      "originalName": "fov",
+      "newName": "final"
+    },
+    {
+      "originalName": "initMainVideo",
+      "newName": "extends"
+    },
+    {
+      "originalName": "MAX_FOV_Y",
+      "newName": "sfdml;"
+    },
+    {
+      "originalName": "initAdVideo",
+      "newName": "static"
+    },
+    {
+      "originalName": "initStats",
+      "newName": "default"
+    },
+    {
+      "originalName": "mainVideoPlayComplete",
+      "newName": "sfdml?"
+    },
+    {
+      "originalName": "zNear",
+      "newName": "sfdml["
+    },
+    {
+      "originalName": "oldX",
+      "newName": "else"
+    },
+    {
+      "originalName": "onVideoPaused",
+      "newName": "false"
+    },
+    {
+      "originalName": "oldY",
+      "newName": "package"
+    },
+    {
+      "originalName": "trackMouseMove",
+      "newName": "true"
+    },
+    {
+      "originalName": "updateLayout",
+      "newName": "sfdml!!"
+    },
+    {
+      "originalName": "initVideo",
+      "newName": "sfdml#"
+    },
+    {
+      "originalName": "_flashvars",
+      "newName": "sfdml@"
+    },
+    {
+      "originalName": "initMenu",
+      "newName": "throw"
+    },
+    {
+      "originalName": "onVideoResumed",
+      "newName": "break"
+    },
+    {
+      "originalName": "initControlBar",
+      "newName": "sfdml\u0026"
+    },
+    {
+      "originalName": "MIN_FOV_Y",
+      "newName": "sfdml5"
+    },
+    {
+      "originalName": "VERSION",
+      "newName": "sfdml0"
+    },
+    {
+      "originalName": "FOV_Y",
+      "newName": "sfdml8"
+    },
+    {
+      "originalName": "TITLE",
+      "newName": "while"
+    },
+    {
+      "originalName": "adVideoPlayingProgress",
+      "newName": "sfdml\"!"
+    },
+    {
+      "originalName": "ADVIDEOS_URL",
+      "newName": "use"
+    }
+  ]
+}
