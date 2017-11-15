@@ -1,0 +1,4 @@
+http://testopen.videoyi.com/webs/player/LS/Panorama/test.html
+
+
+http://testopen.videoyi.com/webs/player/LS/Panorama/LSPanoPlayer.swf
