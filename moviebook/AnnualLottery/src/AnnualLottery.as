@@ -234,7 +234,6 @@ package
 			initMenu();
 			initUI();
 			loadImageListData();
-			//loadVideo();
 			initVideo();
 			initSound();
 			//toggleFullScreen();
@@ -263,26 +262,12 @@ package
 		
 		private function loadVideo1(i:int):void 
 		{
-			//videoUrlArr
-	
-			//videoArr[i].name = String(videoArr[i]);
-			//videoArr[i].autoPlay = false;// 默认是true
-			//					mainVideo.autoPlay = (_flashvars.autoPlay == "true");// 默认是true
-			//mainVideo.autoPlay = _needAutoPlay;// 默认是true
-			//trace("videoArr[i].autoPlay = " + mainVideo.autoPlay);
+			
 			videoArr[i].smoothing = true;
 			videoArr[i].volume = 0;
 			//					mainVideo.visible = false;
 			videoLayer.addChild(videoArr[i]);
-			//					graphicsController.displayTarget = mainVideo;
 			
-			//					mainVideo.width  = acConfig.mainVideo.width;
-			//					mainVideo.height = acConfig.mainVideo.height;
-			
-			//					mainVideoContainer.x = acConfig.mainVideo.x;
-			//					mainVideoContainer.y = acConfig.mainVideo.y;
-			
-			//					mainVideoContainer.y = (stage.stageHeight - mainVideo.height)/2;
 			
 			//videoArr[i].addEventListener(SimpleVideoEvent.LOADING_PROGRESS, mainVideoLoading);//视频加载中
 			//videoArr[i].addEventListener(SimpleVideoEvent.PLAYING_PROGRESS, mainVideoPlayingProgress);//视频播放中
@@ -332,37 +317,7 @@ package
 		protected function onGotVideoMetaInfo(evt:SimpleVideoEvent):void
 		{
 			Log.info("AICorrectionSystem.onGotMainVideoMetaInfo():");
-			var video:SimpleVideo = evt.target as SimpleVideo;
-			//if (video.name == "afterAnimVideo")
-			//{
-				//video.visible = false;
-			//}
-			//video.width = 1920;
-			//video.height = 1080;
-			//if(!_metaInfoGotYet)
-			//{
-				//mainVideoMetaInfo = evt.info;
-				//originVideoWidth = evt.info.width;
-				//originVideoHeight = evt.info.height;
-				//totalVideoDuration = evt.info.duration;
-////				GlobalManager.curVideoFrameRate = mainVideo.ns.currentFPS;
-				////				onResize();
-				////				if(!videoEMC)
-////				{
-					////					loadVideoESDK();
-					////				}
-					////				initControlBar();
-				//setControlBarContent();
-				//_metaInfoGotYet = true;
-				////				playBtn.mouseEnabled = true;
-				//onResize();
-				//if (_needAutoPlay)
-				//{
-					//setTimeout(function():void{
-						//mainVideo.resumeVideo();
-					//}, 3000);
-				//}
-			//}
+			//var video:SimpleVideo = evt.target as SimpleVideo;
 		}	
 		
 		
@@ -448,10 +403,6 @@ package
 		private function initSound():void 
 		{
 			bgMusic = new BgMusic();
-			//bgMusic.addEventListener(Event.SOUND_COMPLETE, onPlaybackComplete);
-			//bgMusic2 = new Sound(new URLRequest("../assets/sound/bgmusic.wav"));
-			//bgMusic2 = new Sound(new URLRequest("../assets/sound/bgmusic.mp3"));
-			//bgMusic2.addEventListener(Event.SOUND_COMPLETE, onPlaybackComplete);
 			rollingSound = new RollingSound();
 			slowDownSound = new SlowDownSound();
 			throwSound = new ThrowSound();
@@ -466,9 +417,6 @@ package
 		{
 			var sound:* = e.target;
 			trace("onPlaybackComplete");
-			//sound.play();
-			//bgMusic.play();
-			//bgMusic.play(0, 1000);
 			if (bgMusicChannel && bgMusicChannel.hasEventListener(Event.SOUND_COMPLETE))
 			{
 				bgMusicChannel.removeEventListener(Event.SOUND_COMPLETE, onBgMusicPlaybackComplete);
@@ -483,48 +431,13 @@ package
 			
 			_imagesUrlListCopy = _imagesUrlList.concat();
 			loadOne();
-			//for (var i:int = 0; i < _imagesUrlList.length; i++)
-			//{
-				
-			
-			//}
-			
-			
-			
 		}
-		
-		
-		private function loadVideo():void 
-		{
-			//beforeAnimVideoLoader = new Loader();
-			//beforeAnimVideoLoader.name = "beforeAnimVideoLoader";
-			//beforeAnimVideoLoader.load(new URLRequest(beforeAnimVideoUrl), new LoaderContext(false, ApplicationDomain.currentDomain));
-			//beforeAnimVideoLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onVideoLoadCompleteHandler);
-			//beforeAnimVideoLoader.contentLoaderInfo.addEventListener(ErrorEvent.ERROR, onVideoLoadErrorHandler);
-			//beforeAnimVideoLoader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onVideoLoadErrorHandler);
-			//beforeAnimVideoLoader.contentLoaderInfo.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onVideoLoadErrorHandler);
-			//
-			//afterAnimVideoLoader = new Loader();
-			//afterAnimVideoLoader.name = "afterAnimVideoLoader";
-			//afterAnimVideoLoader.load(new URLRequest(beforeAnimVideoUrl), new LoaderContext(false, ApplicationDomain.currentDomain));
-			//afterAnimVideoLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onVideoLoadCompleteHandler);
-			//afterAnimVideoLoader.contentLoaderInfo.addEventListener(ErrorEvent.ERROR, onVideoLoadErrorHandler);
-			//afterAnimVideoLoader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onVideoLoadErrorHandler);
-			//afterAnimVideoLoader.contentLoaderInfo.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onVideoLoadErrorHandler);
-			
-			
-			
-		}
-		
 		
 		
 		private function loadOne():void 
 		{
-			//_imagesUrlListCopy
 			var loader:Loader = new Loader();
-			//loader.name = "loader" + _imagesUrlList[curLoadIdx].index;
 			loader.name = "loader" + _imagesUrlList[curLoadIdx].code;
-			//loader.load(new URLRequest(_imagesUrlList[curLoadIdx].url), new LoaderContext(false, ApplicationDomain.currentDomain));
 			loader.load(new URLRequest(GlobalManager.IMAGES_URL_PREFIX + _imagesUrlList[curLoadIdx].photo), new LoaderContext(false, ApplicationDomain.currentDomain));
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onImageLoadCompleteHandler);
 			loader.contentLoaderInfo.addEventListener(ErrorEvent.ERROR, onImageLoadErrorHandler);
@@ -539,7 +452,6 @@ package
 			
 			var nameStr:String = e.target.loader.name;
 			var _code:int = int(nameStr.substr(6));
-			//var obj:Object = {index:idx, bmd:e.target.content.bitmapData};
 			var _mcode:String;
 			for (var i:int = 0; i < _imagesUrlList.length; i++)
 			{
@@ -550,10 +462,6 @@ package
 				}
 			}
 			var obj:Object = {code:_code, bmd:e.target.content.bitmapData, mcode:_mcode};
-			//var str:String = JSON.stringify(obj);
-			//var str:String = JSON.stringify(obj.code);
-			//trace("onImageLoadCompleteHandler():" + obj.toString());
-			//trace("onImageLoadCompleteHandler():" + str);
 			trace("onImageLoadCompleteHandler():obj.code == " + obj.code);
 			_imagesBmdDataList.push(obj);
 			loadNext();
@@ -732,19 +640,13 @@ package
 		{
 			_manipButtonLoader = new Loader();
 			_manipButtonLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onManiButtonLoadComplete);
-			//_manipButtonLoader.load(new URLRequest("../assets/ManipButton.swf"), new LoaderContext());
 			_manipButtonLoader.load(new URLRequest("assets/ManipButton.swf"), new LoaderContext());
-			//_manipButtonLoader.load(new URLRequest("ManipButton.swf"), new LoaderContext());
 		}
 		
 		private function onManiButtonLoadComplete(e:Event):void 
 		{
 			_manipButton = e.target.content.btn;
-			//_manipButton.name = "_manipButton";
-			//_manipButton.x = stage.stageWidth/2;
 			_manipButton.x = 960;
-			//_manipButton.x = (stage.stageWidth - _manipButton.width) / 2;
-			//_manipButton.y = stage.stageHeight - 150;
 			_manipButton.y = 920;
 			_manipButton.visible = false;
 			buttonLayer.addChild(_manipButton);
@@ -756,28 +658,14 @@ package
 		
 		private function initBackGround():void 
 		{
-			//bgImage1 = new BackGroundBaseImage1() as Bitmap;
 			bgImage1 = new BackGroundBase();
-			//var bmd:BitmapData = (new BackGroundBaseImage1()).bitmapData;
-			//bgImage1.width = stage.stageWidth;
-			//bgImage1.height = stage.stageHeight;
 			addChild(bgImage1);
 		}
 		
 		private function initResultLayer():void 
 		{
 			peopleGotPrizedLayer = new Sprite();
-			//peopleGotPrizedLayer.graphics.beginFill(0xffffff, 0.3);
-			//peopleGotPrizedLayer.graphics.drawRect(0, 0, 750, 200);
-			//peopleGotPrizedLayer.graphics.endFill();
-			//peopleGotPrizedLayer.x = 50;
-			//peopleGotPrizedLayer.y = 500;
 			addChild(peopleGotPrizedLayer);
-			
-			//resultMask = new ResultMask();
-			//peopleGotPrizedLayer.addChild(resultMask);
-			////addChild(resultMask);
-			//peopleGotPrizedLayer.mask = resultMask;
 			curChosenPersonRectPortraitLayer = new Sprite();
 			addChild(curChosenPersonRectPortraitLayer); 
 			
@@ -861,21 +749,11 @@ package
 		{
 			_manipButton = new ManipulateButton();
 			
-			//_manipButton = new ManipButtonClass() as MovieClip;
 			var mc:* = new ManipButtonClass();
-			//_manipButton
-			//_manipButton = new ManipButtonClass();
 			_manipButton.name = "_manipButton";
-			
-			//_manipButton.x = stage.stageWidth/2;
-			//_manipButton.x = (stage.stageWidth - _manipButton.width) / 2;
 			_manipButton.x = (1920 - _manipButton.width) / 2;
 			_manipButton.y = 850;
 			addChild(_manipButton);
-			
-			//_startButton = new StartButton();
-			//addChild(_startButton);
-			//_manipButton.mouseEnabled = false;
 			_manipButton.addEventListener(MouseEvent.MOUSE_DOWN,onClickManiButton);
 		}
 
@@ -913,34 +791,6 @@ package
 				lastSlot1LocY = slot1.y;
 				_manipButton.visible = false;
 				stopRollingMusic();
-				//playSlowDownSound();
-				//if (_curShowingSlot)
-				//{
-					//var curShowingIdx:int = -(_curShowingSlot.y / 200);
-					//var jumpRows:int;
-					//anotherSlot:DisplayObject = _curShowingSlot.name == "slot1"
-					//if (curShowingIdx - luckNumber > 20)
-					//{
-						//jumpRows = curShowingIdx - luckNumber - 20;// move down
-					//}
-					///*else if(curShowingIdx - luckNumber > 0 && curShowingIdx - luckNumber <= 20)
-					//{
-						//
-					//}*/
-					////else if (curShowingIdx - luckNumber < 0)// move up
-					//else if (curShowingIdx - luckNumber < 20)// move up
-					//{
-						//jumpRows = luckNumber + 20 - curShowingIdx;
-					//}
-					//
-					//var jumpRows:int = luckNumber
-					//_curShowingSlot.y += jumpRows * 200;
-					//if(_curShowingSlot.y)
-				//}
-				//var 
-				//luck = Math.floor(Math.random() * 10);
-				//luckNumber = Math.floor(Math.random() * _imagesBmdDataList.length);
-				//luckNumber = luckNumber == 0 ? 10:luckNumber;
 			}
 			isDown = ! isDown;
 
@@ -954,10 +804,6 @@ package
 				{
 					var slotMC:DisplayObject = _rollingPanel.getChildAt(i);
 					
-					//trace("slotMC" + i + ".y == " + slotMC.y);
-					
-					//if (slotMC && slotMC.y > 1000)
-					//if (slotMC && slotMC.y > slotMC.height)
 					var bottomHeight:Number = Math.min(500, _rollingPanel.height / 2 - 1);
 					if (slotMC && slotMC.y > bottomHeight)
 					{
@@ -980,10 +826,6 @@ package
 							playSlowDownSound();
 						}
 						
-						
-						
-						//if (passedFrames>=60 && rollingSpeed >= 2)
-						//if (passedFrames>=30 && rollingSpeed >= 2)
 						if (passedFrames>=30 && rollingSpeed >= 5)
 						//if (rollingSpeed >= 0.1)
 						{
@@ -996,12 +838,6 @@ package
 						passedFrames++;
 						if (rollingSpeed >= 0 && rollingSpeed <= 3)
 						{
-						
-							//var remainder:int = _curShowingSlot.y % 200;
-							//if (slotMC.y <= _rollingPanelMask.y && slotMC.y + slotMC.height >= _rollingPanelMask.y + _rollingPanelMask.height)
-							//if (slotMC.y + 200 <= _rollingPanelMask.y && slotMC.y + slotMC.height + 200 >= _rollingPanelMask.y + _rollingPanelMask.height)
-							//if (slotMC.y >= 0 && slotMC.y + slotMC.height <= _rollingPanelMask.height + 2)
-							
 							// choose the one that covers the whole mask mc.
 							//if ((_imagesBmdDataList.length >1 && (slotMC.y + 200 <= _rollingPanelMask.y) && (slotMC.y + slotMC.height + 200 >= _rollingPanelMask.y + _rollingPanelMask.height)) || (_imagesBmdDataList.length == 1 && slotMC.y >= 0 && slotMC.y + slotMC.height <= _rollingPanelMask.height + 2))
 							if ((_imagesBmdDataList.length >1 && (slotMC.y + _rollingPanel.y <= _rollingPanelMask.y) && (slotMC.y + slotMC.height + _rollingPanel.y >= _rollingPanelMask.y + _rollingPanelMask.height)) || (_imagesBmdDataList.length == 1 && slotMC.y >= 0 && slotMC.y + slotMC.height <= _rollingPanelMask.height + 2))
@@ -1009,11 +845,6 @@ package
 								_curShowingSlot = slotMC;
 								//var remainder:int = _curShowingSlot.y % 200;
 								var remainder:int = _curShowingSlot.y % GlobalManager.IMAGE_HEIGHT;
-								//if (slotMC.y < 1000)
-								//if (_curShowingSlot.y <= -luckNumber * 200 && _curShowingSlot.y >= -(luckNumber + 1) * 200)
-								//if (_curShowingSlot.y >= -luckNumber * 200 - 2 && _curShowingSlot.y <= -luckNumber * 200)
-								//if ((_curShowingSlot.y % 200) >= -2 && (_curShowingSlot.y % 200) <= 2)
-								//if (remainder >= 0)
 								if (remainder >= -2)
 								{
 									rollingSpeed = 0;
@@ -1032,18 +863,8 @@ package
 										ExternalInterface.call("console.log", "onRolling():_curLuckNumChosen == " + _curLuckNumChosen + ", _imagesBmdDataList.length == " + _imagesBmdDataList.length);
 									}
 									playSlowDownSound();
-									//showHappyDogs();
 									hideHappyDogs();
 									showExcitedDogs();
-									//hideExcitedDogs();
-									//setTimeout(function():void
-									//{
-										//_manipButton.visible = true;
-									//}, 2000);
-									//stopSlowDownSound();
-									
-									
-									
 									findAndReportCurLuckNum();
 									prepareNextPrize();
 									
@@ -1052,14 +873,6 @@ package
 							
 							
 						}
-//
-						//var poin1:Point = slot1.localToGlobal(new Point(get_rec(luck,slot1).x,get_rec(luck,slot1).y));
-						////速度减到2的时候 才停止
-						//if (poin1.y + 2 >= 100 && poin1.y <= 100 && sd == 2)
-						//{
-							//removeEventListener(Event.ENTER_FRAME,jinru);
-							////is_02 = false;
-						//}
 					}
 
 			}
@@ -1092,7 +905,6 @@ package
 			afterAnimVideo.stopVideo();
 		}
 		
-		//private function throwOutCurLuckyPerson(obj:Object):void 
 		private function throwOutCurLuckyPerson():void 
 		{
 			trace("threwOutCurLuckPerson():");
@@ -1116,54 +928,26 @@ package
 					ExternalInterface.call("console.log", "threwOutCurLuckPerson():bmd is null!");
 				}
 			}
-			//var bitmap:Bitmap = new Bitmap(bmd);
-			//var photoMC:Sprite = new Sprite();
-			var photoMC:Sprite = new RoundPhotoMC(bmd, 160);
-			//var photoMask:ResultMask2 = new ResultMask2();
-			//bitmap.width = 162;
-			//bitmap.height = 216;
-			//photoMC.addChild(bitmap);
-			//photoMask.x = 1;
-			//photoMask.y = 28;
-			//photoMC.addChild(photoMask);
-			//photoMC.mask = photoMask;
 		
+			var photoMC:Sprite = new RoundPhotoMC(bmd, 160);
 			photoMC.scaleX = photoMC.scaleY = 0.2;
 			photoMC.x = _rollingPanelMask.x;
 			photoMC.y = _rollingPanelMask.y;
 			
 			
-			//peopleGotPrizedLayer.addChild(bitmap);
 			peopleGotPrizedLayer.addChild(photoMC);
 			
 			var completeCallBack:Function = function():void{
 				stopThrowSound();
-				//if (peopleChosen.length < 5)
-				//if (peopleChosen.length < curSetResultNum)
-				//{
-					//resumeBgMusic();
-				//}
-				
 			}
-			//TweenLite.to(bmpContainer, 0.3, {x : bmpContainer.x - flipNum * _container.imageBg.width, onComplete:onFlipFinished, onCompleteParams:[i]});
-			//TweenLite.to(bitmap, 3, {x:(peopleChosen.length - 1) * 200, y:600, scaleX:1, scaleY:1, rotation:360, ease:Elastic.easeOut});
-			//TweenLite.to(bitmap, 3, {x:(peopleChosen.length - 1) * 200, y:600, width:150, height:200, rotation:360, ease:Elastic.easeOut});
-			//TweenLite.to(bitmap, 3, {x:(peopleChosen.length - 1) * 200, y:600, width:150, height:200, rotation:360});
-			//TweenLite.to(bitmap, 1, {x:(peopleChosen.length - 1) * 300, y:600, width:GlobalManager.IMAGE_WIDTH/2, height:GlobalManager.IMAGE_HEIGHT/2, rotation:360});
-			//TweenLite.to(bitmap, 1, {x:resultLocArr[peopleChosen.length - 1][0], y:resultLocArr[peopleChosen.length - 1][1], width:GlobalManager.IMAGE_WIDTH / 2, height:GlobalManager.IMAGE_HEIGHT / 2, rotation:360});
-			//TweenLite.to(bitmap, 1, {x:resultLocArr[peopleChosen.length - 1][0], y:resultLocArr[peopleChosen.length - 1][1], width:162, height:216, rotation:360});
 			
-			//TweenLite.to(photoMC, 1, {x:resultLocArr[peopleChosen.length - 1][0], y:resultLocArr[peopleChosen.length - 1][1], width:160, height:216, rotation:360});
-			//TweenLite.to(photoMC, 1, {x:resultLocArr[peopleChosen.length - 1][0], y:resultLocArr[peopleChosen.length - 1][1], width:160, height:216, rotation:360, ease:Elastic.easeOut});
 			TweenLite.to(photoMC, 1, {x:GlobalManager.RESULTLOC_ARR[peopleChosen.length - 1][0], y:GlobalManager.RESULTLOC_ARR[peopleChosen.length - 1][1], width:160, height:216, rotation:360, onComplete:completeCallBack, ease:Elastic.easeOut});
-			//resultLocArr
 			//TweenLite.to(bitmap, 1, {x:(peopleChosen.length - 1) * 200, y:600, width:150, height:200, rotation:360});
 			//trace("threwOutCurLuckPerson():bitmap.width == " + bitmap.width);
 			playThrowSound();
 			trace("threwOutCurLuckPerson():curChosenPersonRectPortrait.width == " + curChosenPersonRectPortrait.width);
 			if (ExternalInterface.available)
 			{
-				//ExternalInterface.call("console.log", "threwOutCurLuckPerson():bitmap.width == " + bitmap.width);
 				ExternalInterface.call("console.log", "threwOutCurLuckPerson():curChosenPersonRectPortrait.width == " + curChosenPersonRectPortrait.width);
 			}
 		}
@@ -1171,12 +955,10 @@ package
 		private function findAndReportCurLuckNum():void 
 		{
 			
-			//for (var i:int = 0; i < _imagesUrlList.length; i++)
 			for (var i:int = 0; i < _imagesBmdDataList.length; i++)
 			{
 				if (_imagesBmdDataList[i].code == _curLuckNumChosen)
 				{
-					//reportCurLuckNum(_imagesUrlList[i].mcode);
 					reportCurLuckNum(_imagesBmdDataList[i].mcode);
 					return;
 				}
@@ -1242,57 +1024,31 @@ package
 				{
 					var image:ImageMC3 = new ImageMC3();
 					var bmp:Bitmap = new Bitmap(_imagesBmdDataList[i].bmd);
-					//bmp.width = 150;
 					bmp.width = GlobalManager.IMAGE_WIDTH;
-					//bmp.height = 200;
 					bmp.height = GlobalManager.IMAGE_HEIGHT;
-					//bmp.name = "bmp" + _imagesBmdDataList[i].index;
 					image.name = "image" + _imagesBmdDataList[i].index;
 					image.imageContainer.addChild(bmp);
 					image.y = i * image.height;
 					panel.addChild(image);
-					//panel.scaleX = panel.scaleY = 0.1;
 				}
 				
-				//_rollingPanel.x = (stage.stageWidth - _rollingPanel.width) / 2;
-				//panel.x = (stage.stageWidth - panel.width) / 2;
-				//panel.x = (stage.stageWidth - panel.width) / 2 + q * 200;
 				panel.y = panel.height * (-q);
 				panel.name = "slot" + (q+1);
 				this["slot"+(q+1)] = panel;
 				_rollingPanel.addChild(panel);
 			}
-			//if (peopleChosen.length < 5)
-			//if (peopleChosen.length < curSetResultNum)
-			//{
-				//_manipButton.visible = true;
-				//if (peopleChosen.length && peopleChosen.length < 5)
-				if (peopleChosen.length && peopleChosen.length < GlobalManager.MAXPEOPLEOFEACHPRIZE["level" + curPrizeLevel])
+			
+			if (peopleChosen.length && peopleChosen.length < GlobalManager.MAXPEOPLEOFEACHPRIZE["level" + curPrizeLevel])
+			{
+				setTimeout(function():void
 				{
-					setTimeout(function():void
-					{
-						_manipButton.visible = true;
-						hideExcitedDogs();
-						showHappyDogs();
-						//resumeBgMusic();
-					}, 5000);
-				}
-				//_manipButton.mouseEnabled = true;
-			//}
-			//addChild(_rollingPanel);
+					_manipButton.visible = true;
+					hideExcitedDogs();
+					showHappyDogs();
+					//resumeBgMusic();
+				}, 5000);
+			}
 		}
-		
-		private function onReqForAllPeopleList():void
-		{		
-			
-		}
-		
-		
-		private function onGotAllPeopleList():void
-		{
-			
-		}
-		
 		
 		
 		private function prepareNextPrize():void
@@ -1313,28 +1069,13 @@ package
 				}
 				if (hasFound)
 					break;
-				//for (var j:int = 0; j < peopleChosen.length; j++)
-				//{
-					//if (_imagesBmdDataList[i].index == peopleChosen[j])
-					//if (_imagesBmdDataList[i].code == peopleChosen[j])
+				
 				if (_imagesBmdDataList[i].code == _curLuckNumChosen)
 				{
 					var deleted:Array = _imagesBmdDataList.splice(i, 1);
-					//var data:Object = {code:_curLuckNumChosen, bmd:}
-					//peopleChosen.push(prizedPeople);
-					//var tempList:Array = _imagesBmdDataList.
 					peopleChosen.push(deleted[0]);
-					//if (peopleChosen.length >= 5)
-					//if (peopleChosen.length >= curSetResultNum)
-					//{
-						_manipButton.visible = false;
-						playWinMusic();
-						//setTimeout(function():void
-						//{
-							//playWinMusic();
-						////}, 4000);
-						//}, 1000);
-					//}
+					_manipButton.visible = false;
+					playWinMusic();
 					_imagesBmdDataList = randomArr(_imagesBmdDataList);
 					setTimeout(function():void
 					{
@@ -1344,8 +1085,7 @@ package
 							ExternalInterface.call("console.log", "now I'm going to threwOutCurLuckPerson()");
 						}
 						showCurLuckyPerson(deleted[0]);
-						//throwOutCurLuckyPerson(); 
-						//_imagesBmdDataList = randomArr(_imagesBmdDataList);
+						
 						clearRollingPanel();
 						setupRollingPanel();
 						if (!_imagesBmdDataList.length)
@@ -1354,7 +1094,6 @@ package
 						}
 						resultCount++;
 					}, 2000);
-					//threwOutCurLuckPerson(deleted[0]);
 					hasFound = true;
 					trace("lucky num has been found: index == " + i + ", _curLuckNumChosen == " + _curLuckNumChosen);
 					if (ExternalInterface.available)
@@ -1400,10 +1139,6 @@ package
 				
 				
 			}
-			//_imagesBmdDataList = randomArr(_imagesBmdDataList);
-			//clearRollingPanel();
-			//setupRollingPanel();
-			
 		}
 		
 		private function showAllFinishedScreenImg():void 
@@ -1446,8 +1181,7 @@ package
 			//-------------------------------------------------random algorithm 1 ： ------------------------------------------------------//
 			//var arr:Array = inArr.concat();
 			//function sortF(a:*,b:*):int {
-				//return Math.floor(Math.random()*30-1);//将*3改为*30试试,效果要好得多
-				////return Math.floor(Math.random()*1-1);//将*3改为*30试试,效果要好得多
+				////return Math.floor(Math.random()*1-1);//
 			//}
 			//arr.sort(sortF);
 			
@@ -1461,16 +1195,9 @@ package
 			//return arr; 
 			
 			trace("finish randomize input Array：" + new Date().time);
-		//10	trace(arr);
-			//var randomNum:int = int(Math.random() * arr.length);
-			//var someItem:Array = arr.splice(randomNum, 1);
-			//arr.unshift(someItem[0]);
+		
 			for (var i:int = 0; i < arr.length; i++)
 			{
-				//var str:String = JSON.stringify(arr[i]);
-				//var str:String = JSON.stringify(arr[i].code);
-			//trace("onImageLoadCompleteHandler():" + obj.toString());
-				//trace("randomArr(): arr[" + i + "] == " + str);
 				trace("randomArr(): arr[" + i + "].code == " + arr[i].code);
 			}
 			
@@ -1498,9 +1225,6 @@ package
 			this.addEventListener(SoundEvent.BG_SOUND, playBgMusic);
 			this.addEventListener(SoundEvent.ROLLING_SOUND, playRollingMusic);
 			this.addEventListener(SoundEvent.SLOWDOWN_SOUND, playSlowDownSound);
-			//this.addEventListener(SoundEvent.JUMP_SOUND_ONE, oneSound);
-			//this.addEventListener(SoundEvent.JUMP_SOUND_TWO, twoSound);
-			//this.addEventListener(SoundEvent.JUMP_SOUND_THREE, threeSound);
 			this.addEventListener(SoundEvent.THROW_SOUND, playThrowSound);
 			this.addEventListener(SoundEvent.PLAUSE_SOUND, playPlauseSound);
 			this.addEventListener(SoundEvent.WIN_SOUND, playWinMusic);
@@ -1516,9 +1240,7 @@ package
 			bgMusicChannel = bgMusic.play();
 			isBgMusicPlaying = true;
 			bgMusicChannel.addEventListener(Event.SOUND_COMPLETE, onBgMusicPlaybackComplete);
-			//bgMusicChannel = bgMusic.play();
-			//bgMusicChannel = bgMusic2.play();
-			//bgMusic.pause();
+			
 		}
 		private function playRollingMusic($evt:Event = null):void
 		{
@@ -1534,20 +1256,7 @@ package
 			slowDownSoundChannel = slowDownSound.play();
 			//rollingMusicChannel = rollingMusic.play();
 		}
-		//
-		private function oneSound($evt:Event = null):void
-		{
-			this._soundControl.playSoundEff("Jump0");
-		}
-		private function twoSound($evt:Event = null):void
-		{
-			this._soundControl.playSoundEff("Jump1");
-		}
-		private function threeSound($evt:Event = null):void
-		{
-			this._soundControl.playSoundEff("Jump2");
-		}
-		//
+		
 		private function playThrowSound($evt:Event = null):void
 		{
 			//this._soundControl.playSoundEff("ThrowSound");

@@ -99,21 +99,7 @@ package com.view.panel
 					var idx:int = 0;
 					for (var j:int = 0; j < curLevelData.length; j++)
 					{
-						//var obj:Object = curLevelData[j];
-						//var mcode:String = obj.mcode;
-						
 						loadHistoryImage(curLevelData[j], i, j);
-						//for each(var imageData:Object in _imagesBmdDataList)
-						//{
-							//if (obj.mcode == imageData.mcode)
-							//{
-								//
-								//idx++;
-								//break;
-							//}
-						//}
-						
-						
 					}
 				}
 			}
@@ -127,8 +113,6 @@ package com.view.panel
 		{
 			var loader:Loader = new Loader();
 			loader.name = "loader" + level + "_" + index;
-			//loader.data = {};
-			//loader.load(new URLRequest(_imagesUrlList[curLoadIdx].url), new LoaderContext(false, ApplicationDomain.currentDomain));
 			loader.load(new URLRequest(GlobalManager.IMAGES_URL_PREFIX + data.photo), new LoaderContext(false, ApplicationDomain.currentDomain));
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onImageLoadCompleteHandler);
 			loader.contentLoaderInfo.addEventListener(ErrorEvent.ERROR, onImageLoadErrorHandler);
@@ -161,7 +145,6 @@ package com.view.panel
 			{
 				onAllImagesLoaded();
 			}
-			//loadNext();
 		}
 		
 		private function onAllImagesLoaded():void 
