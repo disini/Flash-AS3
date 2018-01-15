@@ -168,7 +168,7 @@ package
 		//private var allFinishedScreenImg:AllFinishedScreen;
 		private var allFinishedScreenImg:*;
 		
-		
+		private const INIT_SPEED:int = 174;
 		
 		/**
 		 * 声音
@@ -764,7 +764,8 @@ package
 			if (isDown==false)
 			{
 				//配置速度
-				rollingSpeed = 57;
+				//rollingSpeed = 57;
+				rollingSpeed = INIT_SPEED;
 				_hasCurLuckNumFound = false;
 				_manipButton.gotoAndStop(2);
 				state = 1;// 
@@ -826,7 +827,8 @@ package
 							playSlowDownSound();
 						}
 						
-						if (passedFrames>=30 && rollingSpeed >= 5)
+						//if (passedFrames>=30 && rollingSpeed > 5)
+						if (passedFrames>=10 && rollingSpeed > 5)
 						//if (rollingSpeed >= 0.1)
 						{
 							rollingSpeed -= 5;
@@ -836,7 +838,8 @@ package
 						//rollingSpeed = rollingSpeed > 1 ? rollingSpeed:1;
 
 						passedFrames++;
-						if (rollingSpeed >= 0 && rollingSpeed <= 3)
+						//if (rollingSpeed >= 0 && rollingSpeed <= 3)
+						if (rollingSpeed >= 0 && rollingSpeed <= 5)
 						{
 							// choose the one that covers the whole mask mc.
 							//if ((_imagesBmdDataList.length >1 && (slotMC.y + 200 <= _rollingPanelMask.y) && (slotMC.y + slotMC.height + 200 >= _rollingPanelMask.y + _rollingPanelMask.height)) || (_imagesBmdDataList.length == 1 && slotMC.y >= 0 && slotMC.y + slotMC.height <= _rollingPanelMask.height + 2))
@@ -845,7 +848,8 @@ package
 								_curShowingSlot = slotMC;
 								//var remainder:int = _curShowingSlot.y % 200;
 								var remainder:int = _curShowingSlot.y % GlobalManager.IMAGE_HEIGHT;
-								if (remainder >= -2)
+								//if (remainder >= -2)
+								if (remainder >= -5)
 								{
 									rollingSpeed = 0;
 									removeEventListener(Event.ENTER_FRAME,onRolling);
@@ -929,7 +933,8 @@ package
 				}
 			}
 		
-			var photoMC:Sprite = new RoundPhotoMC(bmd, 160);
+			//var photoMC:Sprite = new RoundPhotoMC(bmd, 160);
+			var photoMC:Sprite = new RoundPhotoMC(bmd, 120);
 			photoMC.scaleX = photoMC.scaleY = 0.2;
 			photoMC.x = _rollingPanelMask.x;
 			photoMC.y = _rollingPanelMask.y;
@@ -941,7 +946,7 @@ package
 				stopThrowSound();
 			}
 			
-			TweenLite.to(photoMC, 1, {x:GlobalManager.RESULTLOC_ARR[peopleChosen.length - 1][0], y:GlobalManager.RESULTLOC_ARR[peopleChosen.length - 1][1], width:160, height:216, rotation:360, onComplete:completeCallBack, ease:Elastic.easeOut});
+			TweenLite.to(photoMC, 1, {x:GlobalManager.RESULTLOC_ARR[peopleChosen.length - 1][0], y:GlobalManager.RESULTLOC_ARR[peopleChosen.length - 1][1], width:120, height:160, rotation:360, onComplete:completeCallBack, ease:Elastic.easeOut});
 			//TweenLite.to(bitmap, 1, {x:(peopleChosen.length - 1) * 200, y:600, width:150, height:200, rotation:360});
 			//trace("threwOutCurLuckPerson():bitmap.width == " + bitmap.width);
 			playThrowSound();

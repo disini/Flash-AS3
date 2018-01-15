@@ -162,11 +162,11 @@ package com.view.panel
 				{
 					for (var j:int = 0; j < arr.length; j++)
 					{
-						var photoMC:Sprite = new RoundPhotoMC(arr[j].bmd, 60);
+						var photoMC:Sprite = new RoundPhotoMC(arr[j].bmd, 40);
 						photoMC.name = "photoMC" + i + "_" + j;
 						//photoMC.scaleX = photoMC.scaleY = 0.2;
-						photoMC.x = 1300 + 80 * j;
-						photoMC.y = 50 + 80 * (3 - i);
+						photoMC.x = 1300 + 50 * j;
+						photoMC.y = 60 + 50 * (3 - i);
 						photoMC.mouseChildren = false;
 						photoMC.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverPhotoMC);
 						photoMC.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutPhotoMC);

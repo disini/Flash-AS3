@@ -8,15 +8,15 @@
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>
-      <value>false</value>
-    </define>
-    <define append="true">
-      <name>CONFIG::release</name>
       <value>true</value>
     </define>
     <define append="true">
+      <name>CONFIG::release</name>
+      <value>false</value>
+    </define>
+    <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'2018/1/10'</value>
+      <value>'2018/1/15'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -30,21 +30,19 @@
       <name>CONFIG::desktop</name>
       <value>false</value>
     </define>
-    <optimize>true</optimize>
-    <omit-trace-statements>true</omit-trace-statements>
-    <verbose-stacktraces>false</verbose-stacktraces>
+    <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>K:\Projects\movieBook\LiuSheng\Flash\AnnualLottery\src</path-element>
+      <path-element>N:\github\disini\Flash-AS3\moviebook\AnnualLottery\src</path-element>
       <path-element>G:\Program Files\Adobe\tools\FlashDevelop\5.2.0\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>K:\Projects\movieBook\LiuSheng\Flash\AnnualLottery\libs</path-element>
-      <path-element>K:\Projects\movieBook\LiuSheng\Flash\AnnualLottery\src\com</path-element>
-      <path-element>K:\Projects\movieBook\LiuSheng\Flash\AnnualLottery\src\com\greensock</path-element>
+      <path-element>N:\github\disini\Flash-AS3\moviebook\AnnualLottery\libs</path-element>
+      <path-element>N:\github\disini\Flash-AS3\moviebook\AnnualLottery\src\com</path-element>
+      <path-element>N:\github\disini\Flash-AS3\moviebook\AnnualLottery\src\com\greensock</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>K:\Projects\movieBook\LiuSheng\Flash\AnnualLottery\src\AnnualLottery.as</path-element>
+    <path-element>N:\github\disini\Flash-AS3\moviebook\AnnualLottery\src\AnnualLottery.as</path-element>
   </file-specs>
   <default-background-color>#000000</default-background-color>
   <default-frame-rate>60</default-frame-rate>
