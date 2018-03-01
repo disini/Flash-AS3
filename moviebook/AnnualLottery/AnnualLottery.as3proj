@@ -8,10 +8,11 @@
     <movie fps="60" />
     <movie width="1920" />
     <movie height="1080" />
-    <movie version="23" />
+    <movie version="28" />
     <movie minorVersion="0" />
     <movie platform="Flash Player" />
     <movie background="#000000" />
+    <movie preferredSDK="Apache Flex 4.16.0;4.16.0;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>

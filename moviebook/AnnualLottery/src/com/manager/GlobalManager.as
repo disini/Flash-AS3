@@ -8,7 +8,7 @@ package com.manager
 	{
 		
 		public static const APP_NAME:String = "MovieBook AI System for Recognition";
-		public static const VERSION:String = "20180112C";
+		public static const VERSION:String = "20180116A";
 		public static const IMAGES_URL_PREFIX:String = "http://172.16.1.115:8500/avatar/";
 		public static const REPORTCURLUCKNUM_URL_PREFIX:String = "http://172.16.1.115:8500/lucky/lucky?mcode=";
 		public static const HISTORY_RECORD_URL:String = "http://172.16.1.115:8500/lucky/beluck";

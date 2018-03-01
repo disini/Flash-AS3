@@ -246,9 +246,9 @@ package
 			beforeAnimVideo = new SimpleVideo(true);
 			beforeAnimVideo.autoPlay = true;
 			beforeAnimVideo.name = "beforeAnimVideo";
-			//afterAnimVideo = new SimpleVideo();
+			afterAnimVideo = new SimpleVideo();
 			//afterAnimVideo = new SimpleVideo(false, true);
-			afterAnimVideo = new SimpleVideo(true);
+			//afterAnimVideo = new SimpleVideo(true);
 			afterAnimVideo.autoPlay = false;
 			afterAnimVideo.name = "afterAnimVideo";
 			afterAnimVideo.visible = false;
@@ -591,6 +591,7 @@ package
 			choosePrizeCBox.chooseLevelCBX.dataProvider = new DataProvider(items);
 			
 			choosePrizeCBox.chooseLevelCBX.addEventListener(Event.CHANGE, onChangeCboxData);
+			choosePrizeCBox.visible = false;
 		}
 		
 		private function onChangeCboxData(e:Event):void 
@@ -869,8 +870,11 @@ package
 									playSlowDownSound();
 									hideHappyDogs();
 									showExcitedDogs();
-									findAndReportCurLuckNum();
-									prepareNextPrize();
+									setTimeout(function():void{
+										findAndReportCurLuckNum(prepareNextPrize);
+									//prepareNextPrize();
+									}, 500);
+									
 									
 								}
 							}
@@ -892,6 +896,7 @@ package
 		private function showExcitedDogs():void 
 		{
 			afterAnimVideo.visible = true;
+			afterAnimVideo.seek(0);
 			afterAnimVideo.resumeVideo();
 			//afterAnimVideo.replay();
 		}
@@ -905,8 +910,8 @@ package
 		private function hideExcitedDogs():void 
 		{
 			afterAnimVideo.visible = false;
-			afterAnimVideo.seek(0);
 			afterAnimVideo.stopVideo();
+			//afterAnimVideo.seek(0, false);
 		}
 		
 		private function throwOutCurLuckyPerson():void 
@@ -957,7 +962,7 @@ package
 			}
 		}
 		
-		private function findAndReportCurLuckNum():void 
+		private function findAndReportCurLuckNum(callBack:Function):void 
 		{
 			
 			for (var i:int = 0; i < _imagesBmdDataList.length; i++)
@@ -965,6 +970,10 @@ package
 				if (_imagesBmdDataList[i].code == _curLuckNumChosen)
 				{
 					reportCurLuckNum(_imagesBmdDataList[i].mcode);
+					if (callBack != null)
+					{
+						callBack();
+					}
 					return;
 				}
 			}
@@ -1011,7 +1020,12 @@ package
 			setTimeout(function():void
 			{
 				setupRollingPanel();
-			}, 1000);
+			}, 2000);
+			setTimeout(function():void
+			{
+				choosePrizeCBox.visible = true;
+			}, 3000);
+			
 			//setupRollingPanel();
 		}
 		
@@ -1090,13 +1104,16 @@ package
 							ExternalInterface.call("console.log", "now I'm going to threwOutCurLuckPerson()");
 						}
 						showCurLuckyPerson(deleted[0]);
-						
-						clearRollingPanel();
-						setupRollingPanel();
-						if (!_imagesBmdDataList.length)
+						if (_imagesBmdDataList.length)
 						{
-							_manipButton.visible = false;
+							clearRollingPanel();
+							setupRollingPanel();
 						}
+						//else
+						////if (!_imagesBmdDataList.length)
+						//{
+							//_manipButton.visible = false;
+						//}
 						resultCount++;
 					}, 2000);
 					hasFound = true;
